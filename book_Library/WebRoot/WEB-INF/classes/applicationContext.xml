@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+<!-- sqlServer配置 -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+  	<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+    <property name="url" value="jdbc:sqlserver://localhost:1433;DatabaseName=teaching"/>
+    <property name="username" value="sa"/>
+     <property name="password" value="cbgsjx25371737"/>
+</bean>
+<!-- jdbcTemplate -->
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name="dataSource" ref="dataSource"></property>
+</bean>
+<!-- UserDAO -->
+<bean id="userDAO" class="com.chen.DAO.UserDAO">
+<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+</bean>
+<!-- UserServer -->
+<bean id="userServer" class="com.chen.server.UserServer">
+<property name="userDAO" ref="userDAO"></property>
+</bean>
+
+<!-- managerDAO -->
+<bean id="managerDAO" class="com.chen.DAO.ManagerDAO">
+<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+</bean>
+<!-- managerServer -->
+<bean id="managerServer" class="com.chen.server.ManagerServer">
+<property name="managerDAO" ref="managerDAO"></property>
+</bean>
+<!-- bookDAo -->
+<bean id="bookDAO" class="com.chen.DAO.book.BookDAO">
+<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+</bean>
+<!-- bookServer -->
+<bean id="bookServer" class="com.chen.server.book.BookServer">
+<property name="bookDAO" ref="bookDAO"></property>
+</bean>
+</beans>  

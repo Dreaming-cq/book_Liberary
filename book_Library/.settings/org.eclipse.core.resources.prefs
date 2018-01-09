@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/jsp/book/bookList_user.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/manager/addBook.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/manager/book_alter.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/manager/user_list.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/user/borrow_list.jsp=UTF-8
